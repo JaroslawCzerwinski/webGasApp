@@ -4,7 +4,6 @@ import pl.czerwinski.webgasapp.model.User;
 
 import java.sql.Timestamp;
 
-
 public class Refueling {
 	private long id;
 	private int distance;
@@ -17,7 +16,7 @@ public class Refueling {
 	private double saiving;
 	private double gasEfficiency;
 	private User userId;
-	
+
 	public Refueling() {
 	}
 
@@ -34,73 +33,103 @@ public class Refueling {
 		this.gasEfficiency = refueling.gasEfficiency;
 		this.userId = new User(refueling.userId);
 	}
-	
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public int getDistance() {
 		return distance;
 	}
+
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
+
 	public Timestamp getDate() {
 		return date;
 	}
+
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
+
 	public double getLpgAmount() {
 		return lpgAmount;
 	}
+
 	public void setLpgAmount(double lpgAmount) {
 		this.lpgAmount = lpgAmount;
 	}
+
 	public double getLpgPrice() {
 		return lpgPrice;
 	}
+
 	public void setLpgPrice(double lpgPrice) {
 		this.lpgPrice = lpgPrice;
 	}
+
 	public double getPetrolAmount() {
 		return petrolAmount;
 	}
+
 	public void setPetrolAmount(double petrolAmount) {
 		this.petrolAmount = petrolAmount;
 	}
+
 	public double getPetrolPrice() {
 		return petrolPrice;
 	}
+
 	public void setPetrolPrice(double petrolPrice) {
 		this.petrolPrice = petrolPrice;
 	}
+
 	public double getPaid() {
 		return paid;
 	}
+
 	public void setPaid(double paid) {
 		this.paid = paid;
 	}
+
 	public double getSaiving() {
 		return saiving;
 	}
+
 	public void setSaiving(double saiving) {
 		this.saiving = saiving;
 	}
+
 	public double getGasEfficiency() {
 		return gasEfficiency;
 	}
+
 	public void setGasEfficiency(double gasEfficiency) {
 		this.gasEfficiency = gasEfficiency;
 	}
+
 	public User getUserId() {
 		return userId;
 	}
+
 	public void setUserId(User userId) {
 		this.userId = userId;
 	}
+
+	@Override
+	public String toString() {
+		return "Discovery [id=" + id + ", distance=" + distance + ", date=" + date + ", lpgAmount=" + lpgAmount
+				+ ", lpgPrice=" + lpgPrice + ", petrolAmount=" + petrolAmount + ", petrolPrcie=" + petrolPrice
+				+ ", paid=" + paid + ", saiving=" + saiving + ", gasEfficiency=" + gasEfficiency + ", userId=" + userId
+				+ "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -126,6 +155,7 @@ public class Refueling {
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -165,6 +195,5 @@ public class Refueling {
 			return false;
 		return true;
 	}
-	
-	
+
 }

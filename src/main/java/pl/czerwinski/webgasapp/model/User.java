@@ -13,7 +13,7 @@ public class User {
 		this.username = user.username;
 		this.password = user.password;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -37,7 +37,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
