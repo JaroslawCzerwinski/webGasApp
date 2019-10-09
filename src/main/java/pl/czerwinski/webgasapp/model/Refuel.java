@@ -4,7 +4,7 @@ import pl.czerwinski.webgasapp.model.User;
 
 import java.sql.Timestamp;
 
-public class Refueling {
+public class Refuel {
 	private long id;
 	private int distance;
 	private Timestamp date;
@@ -17,21 +17,21 @@ public class Refueling {
 	private double gasEfficiency;
 	private User userId;
 
-	public Refueling() {
+	public Refuel() {
 	}
 
-	public Refueling(Refueling refueling) {
-		this.id = refueling.id;
-		this.distance = refueling.distance;
-		this.date = new Timestamp(refueling.date.getTime());
-		this.lpgAmount = refueling.lpgAmount;
-		this.lpgPrice = refueling.lpgPrice;
-		this.petrolAmount = refueling.petrolAmount;
-		this.petrolPrice = refueling.petrolPrice;
-		this.paid = refueling.paid;
-		this.saiving = refueling.saiving;
-		this.gasEfficiency = refueling.gasEfficiency;
-		this.userId = new User(refueling.userId);
+	public Refuel(Refuel refuel) {
+		this.id = refuel.id;
+		this.distance = refuel.distance;
+		this.date = new Timestamp(refuel.date.getTime());
+		this.lpgAmount = refuel.lpgAmount;
+		this.lpgPrice = refuel.lpgPrice;
+		this.petrolAmount = refuel.petrolAmount;
+		this.petrolPrice = refuel.petrolPrice;
+		this.paid = refuel.paid;
+		this.saiving = refuel.saiving;
+		this.gasEfficiency = refuel.gasEfficiency;
+		this.userId = new User(refuel.userId);
 	}
 
 	public long getId() {
@@ -164,7 +164,7 @@ public class Refueling {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Refueling other = (Refueling) obj;
+		Refuel other = (Refuel) obj;
 		if (date == null) {
 			if (other.date != null)
 				return false;
