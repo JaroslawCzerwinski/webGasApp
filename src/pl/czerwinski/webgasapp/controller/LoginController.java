@@ -12,8 +12,12 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("CZy u¿ytkownik jest zalogowany ? ");
 		if(request.getUserPrincipal() != null) {
-			response.sendRedirect(request.getContextPath() + "/");
+			
+			System.out.println("User jest zalogowany nastêpuje przekierowanie");
+			response.sendRedirect(request.getContextPath() + "/newRefuel.jsp");
+			
 		} else {
 			response.sendError(403);
 		}

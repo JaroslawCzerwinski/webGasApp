@@ -28,7 +28,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Statystyki</a></li>
 					<li><a href="#">Historia</a></li>
-					<li><a href="#">Wyloguj się</a></li>
+					<li><a href="logout">Wyloguj się</a></li>
 				</ul>
 			</div>
 
