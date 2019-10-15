@@ -20,15 +20,14 @@ public class ConnectionProvider {
 		if (dataSource == null) {
 			try {
 				Context initialContext = new InitialContext();
-				Context envContext = (Context) initialContext
-						.lookup("java:comp/env");
+				Context envContext = (Context) initialContext.lookup("java:comp/env");
 				DataSource ds = (DataSource) envContext.lookup("jdbc/gasdata");
 				dataSource = ds;
 			} catch (NamingException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return dataSource;
 	}
 }

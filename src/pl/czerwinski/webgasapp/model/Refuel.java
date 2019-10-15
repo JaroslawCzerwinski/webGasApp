@@ -15,7 +15,7 @@ public class Refuel {
 	private double paid;
 	private double saiving;
 	private double gasEfficiency;
-	private User userId;
+	private User user;
 
 	public Refuel() {
 	}
@@ -31,7 +31,7 @@ public class Refuel {
 		this.paid = refuel.paid;
 		this.saiving = refuel.saiving;
 		this.gasEfficiency = refuel.gasEfficiency;
-		this.userId = new User(refuel.userId);
+		this.user = new User(refuel.user);
 	}
 
 	public long getId() {
@@ -114,19 +114,19 @@ public class Refuel {
 		this.gasEfficiency = gasEfficiency;
 	}
 
-	public User getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
 		return "Discovery [id=" + id + ", distance=" + distance + ", date=" + date + ", lpgAmount=" + lpgAmount
 				+ ", lpgPrice=" + lpgPrice + ", petrolAmount=" + petrolAmount + ", petrolPrcie=" + petrolPrice
-				+ ", paid=" + paid + ", saiving=" + saiving + ", gasEfficiency=" + gasEfficiency + ", userId=" + userId
+				+ ", paid=" + paid + ", saiving=" + saiving + ", gasEfficiency=" + gasEfficiency + ", user=" + user
 				+ "]";
 	}
 
@@ -152,7 +152,7 @@ public class Refuel {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(saiving);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -188,10 +188,10 @@ public class Refuel {
 			return false;
 		if (Double.doubleToLongBits(saiving) != Double.doubleToLongBits(other.saiving))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}

@@ -19,7 +19,6 @@ public class LoginFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("Filter gasApp siê wykona³");
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		if(httpReq.getUserPrincipal() != null && httpReq.getSession().getAttribute("user") == null) {
 			saveUserInSession(httpReq);
@@ -31,9 +30,7 @@ public class LoginFilter implements Filter{
 		UserService userService = new UserService();
 		String username = request.getUserPrincipal().getName();
 		User userByUsername = userService.getUserByUsername(username);
-		System.out.println("zaraz sprawdze w BD");
 		request.getSession(true).setAttribute("user", userByUsername);
-		System.out.println("sprawdzenie usera po jego imieniu w BD sie wykonalo");
 	
 	
 	}
