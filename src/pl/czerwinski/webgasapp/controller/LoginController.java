@@ -13,8 +13,9 @@ public class LoginController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Wykonuje do GET login");
 		if (request.getUserPrincipal() != null) {
-			response.sendRedirect(request.getContextPath() + "/newRefuel.jsp");
+			response.sendRedirect(request.getContextPath() + "/add");
 		} else {
 			response.sendError(403);
 		}

@@ -37,7 +37,7 @@
 
 	<div class="container">
 		<h1 class="form-signin-heading">Dodaj nowe tankowanie</h1>
-		<form class="form-signin" method="post" action="new">
+		<form class="form-signin" method="post" action="add">
 			<div class="row">
 
 				<div class="col-ms-6 col-md-2">
@@ -66,7 +66,7 @@
 				</div>
 				<div class="col-ms-6 col-md-2">
 				
-						 <input type="range" min="40" max="120" value="80" id="myRange" class="slider" />
+						 <input name="slider" type="range" min="40" max="120" value="80" id="myRange" class="slider" />
 						 <p>Efektywność gazu:<span id="gasEffectivityValue"></span>%</p>	
 					</div>
 

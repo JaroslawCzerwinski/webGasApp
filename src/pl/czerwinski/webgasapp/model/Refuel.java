@@ -3,11 +3,12 @@ package pl.czerwinski.webgasapp.model;
 import pl.czerwinski.webgasapp.model.User;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Refuel {
 	private long id;
 	private int distance;
-	private Timestamp date;
+	private String date;
 	private double lpgAmount;
 	private double lpgPrice;
 	private double petrolAmount;
@@ -23,7 +24,7 @@ public class Refuel {
 	public Refuel(Refuel refuel) {
 		this.id = refuel.id;
 		this.distance = refuel.distance;
-		this.date = new Timestamp(refuel.date.getTime());
+		this.date = refuel.date;
 		this.lpgAmount = refuel.lpgAmount;
 		this.lpgPrice = refuel.lpgPrice;
 		this.petrolAmount = refuel.petrolAmount;
@@ -50,11 +51,11 @@ public class Refuel {
 		this.distance = distance;
 	}
 
-	public Timestamp getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
