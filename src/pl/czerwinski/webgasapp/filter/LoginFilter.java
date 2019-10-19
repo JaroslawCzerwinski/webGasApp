@@ -19,10 +19,12 @@ public class LoginFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println("filtr sie wykonal");
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		if(httpReq.getUserPrincipal() != null && httpReq.getSession().getAttribute("user") == null) {
 			saveUserInSession(httpReq);
 		}
+		System.out.println("u¿ytkownik jest zalogowany przekierowuje");
 		chain.doFilter(request, response);
 	}
 
