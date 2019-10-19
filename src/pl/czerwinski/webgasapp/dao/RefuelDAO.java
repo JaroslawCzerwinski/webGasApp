@@ -6,5 +6,6 @@ import pl.czerwinski.webgasapp.model.Refuel;
 
 public interface RefuelDAO extends GenericDAO<Refuel, Long> {
 
-	List<Refuel> getAll();	
+	List<Refuel> getAll();
+	List<Refuel> getRefuelByUserId(String userId);
 }

@@ -1,9 +1,12 @@
 package pl.czerwinski.webgasapp.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -11,6 +14,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import pl.czerwinski.webgasapp.model.Refuel;
+import pl.czerwinski.webgasapp.model.User;
 import pl.czerwinski.webgasapp.util.ConnectionProvider;
 
 public class RefuelDAOImpl implements RefuelDAO {
@@ -18,6 +22,8 @@ public class RefuelDAOImpl implements RefuelDAO {
 	private static final String CREATE_NEW_REFUEL = "INSERT INTO refueling_data(distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency, user_id) "
 			+ "VALUES(:distance, :date, :lpg_amount, :lpg_price, :petrol_amount, :petrol_price, :paid, :saiving, :gas_efficiency, :user_id);";
 
+	private static final String READ_REFUELING_BY_USER_ID = "SELECT distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency  FROM refueling_data WHERE user_id=:user_id";
+	
 	private NamedParameterJdbcTemplate template;
 
 	public RefuelDAOImpl() {
@@ -69,6 +75,36 @@ public class RefuelDAOImpl implements RefuelDAO {
 	public List<Refuel> getAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Refuel> getRefuelByUserId(String userId) {
+		List<Refuel> resultUserId = null;
+		SqlParameterSource paramSource = new MapSqlParameterSource("user_id", userId);
+		// IN PROGRESS....
+		
+		
+		List<Refuel> refueling = template.query(READ_REFUELING_BY_USER_ID, new RefuelRowMapper());
+		
+		
+		return refueling;
+	}
+	private class RefuelRowMapper implements RowMapper<Refuel> {
+		@Override
+		public Refuel mapRow(ResultSet resultSet, int row) throws SQLException {
+			Refuel refuel = new Refuel();
+			refuel.setDistance(resultSet.getInt("distance"));
+			refuel.setDate(resultSet.getString("date"));
+			refuel.setLpgAmount(resultSet.getDouble("lpg_amount"));
+			refuel.setLpgPrice(resultSet.getDouble("lpg_price"));
+			refuel.setPetrolAmount(resultSet.getDouble("petrol_amount"));
+			refuel.setPetrolPrice(resultSet.getDouble("petrol_price"));
+			refuel.setPaid(resultSet.getDouble("paid"));
+			refuel.setSaiving(resultSet.getDouble("saiving"));
+			refuel.setGasEfficiency(resultSet.getDouble("gas_efficiency"));
+			
+			return refuel;
+		}
 	}
 
 }

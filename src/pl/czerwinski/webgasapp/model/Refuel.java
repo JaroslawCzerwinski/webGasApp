@@ -2,9 +2,6 @@ package pl.czerwinski.webgasapp.model;
 
 import pl.czerwinski.webgasapp.model.User;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 public class Refuel {
 	private long id;
 	private int distance;
