@@ -26,21 +26,24 @@ public class HomeController extends HttpServlet {
 
 	private void saveRefuelingsInRequest(HttpServletRequest request) {
 		RefuelService refuelingService = new RefuelService();
-		List<Refuel> refuelingsByUserId = refuelingService.getRefuelsByUserId(new Comparator<Refuel>() {
-			
+		String username = request.getUserPrincipal().getName();
+		List<Refuel> refuelingsByUsername = refuelingService.getRefuelsByUsername(new Comparator<Refuel>() {
 			// more distance = higher
 			@Override
 			public int compare(Refuel r1, Refuel r2) {
-				 int r1Distance = r1.getDistance();
-				 int r2Distance = r2.getDistance();
-				 if(r1Distance < r2Distance) {
-				 return 1;
-				 } else if(r1Distance > r2Distance) {
-				 return -1;
-				 }
+				int r1Distance = r1.getDistance();
+				int r2Distance = r2.getDistance();
+				if (r1Distance < r2Distance) {
+					return 1;
+				} else if (r1Distance > r2Distance) {
+					return -1;
+				}
 				return 0;
 			}
-		});
-		request.setAttribute("refuelings", refuelingsByUserId);
+		}, username);
+		{
+
+			request.setAttribute("refuelings", refuelingsByUsername);
+		}
 	}
 }

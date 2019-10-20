@@ -20,7 +20,6 @@ public class RefuelService {
 
 	private Refuel createRefuelObject(int distance, String date, double lpgAmount, double lpgPrice, double petrolAmount,
 			double petrolPrice, double gasEfficiency, User user) {
-		System.out.println("Tworze obiekty Refuel");
 		Refuel refuel = new Refuel();
 		User userCopy = new User(user);
 		Double calculatePaid = calculatePaid(lpgAmount, lpgPrice, petrolAmount, petrolPrice);
@@ -32,17 +31,17 @@ public class RefuelService {
 		refuel.setLpgPrice(lpgPrice);
 		refuel.setPetrolAmount(petrolAmount);
 		refuel.setPetrolPrice(petrolPrice);
-		refuel.setGasEfficiency(gasEfficiency/100);
+		refuel.setGasEfficiency(gasEfficiency);
 		refuel.setPaid(calculatePaid);
 		refuel.setSaiving(calculateSaiving);
 		refuel.setUser(userCopy);
 		return refuel;
 	}
 	
-	public List<Refuel> getRefuelsByUserId(Comparator<Refuel> comparator) {
+	public List<Refuel> getRefuelsByUsername(Comparator<Refuel> comparator, String username) {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		RefuelDAO refuelDao = factory.getRefuelDAO();
-		List<Refuel> refuels = refuelDao.getRefuelByUserId();
+		List<Refuel> refuels = refuelDao.getRefuelByUsername(username);
 		if(comparator != null && refuels != null) {
 			refuels.sort(comparator);
 		}

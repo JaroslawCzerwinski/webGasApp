@@ -14,7 +14,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import pl.czerwinski.webgasapp.model.Refuel;
-import pl.czerwinski.webgasapp.model.User;
 import pl.czerwinski.webgasapp.util.ConnectionProvider;
 
 public class RefuelDAOImpl implements RefuelDAO {
@@ -22,7 +21,7 @@ public class RefuelDAOImpl implements RefuelDAO {
 	private static final String CREATE_NEW_REFUEL = "INSERT INTO refueling_data(distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency, user_id) "
 			+ "VALUES(:distance, :date, :lpg_amount, :lpg_price, :petrol_amount, :petrol_price, :paid, :saiving, :gas_efficiency, :user_id);";
 
-	private static final String READ_REFUELING_BY_USER_ID = "SELECT distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency  FROM refueling_data WHERE user_id=:user_id";
+	private static final String READ_REFUELING_BY_USERNAME = "SELECT distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency FROM refueling_data r LEFT JOIN user u ON r.user_id = u.user_id WHERE username=:username";
 	
 	private NamedParameterJdbcTemplate template;
 
@@ -78,15 +77,9 @@ public class RefuelDAOImpl implements RefuelDAO {
 	}
 
 	@Override
-	public List<Refuel> getRefuelByUserId(String userId) {
-		List<Refuel> resultUserId = null;
-		SqlParameterSource paramSource = new MapSqlParameterSource("user_id", userId);
-		// IN PROGRESS....
-		
-		
-		List<Refuel> refueling = template.query(READ_REFUELING_BY_USER_ID, new RefuelRowMapper());
-		
-		
+	public List<Refuel> getRefuelByUsername(String username) {
+		SqlParameterSource paramSource = new MapSqlParameterSource("username", username);
+		List<Refuel> refueling = template.query(READ_REFUELING_BY_USERNAME, paramSource, new RefuelRowMapper());
 		return refueling;
 	}
 	private class RefuelRowMapper implements RowMapper<Refuel> {
