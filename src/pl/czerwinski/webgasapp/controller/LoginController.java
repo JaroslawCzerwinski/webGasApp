@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
+@WebServlet("")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getUserPrincipal() != null) {
-			response.sendRedirect(request.getContextPath() + "/");
+			request.getRequestDispatcher("/home").forward(request, response);
+			
 		} else {
 			response.sendError(403);
 		}
 	}
-
 }

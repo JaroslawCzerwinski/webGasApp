@@ -12,31 +12,8 @@
   </head>
 
   <body>
-    
-    <nav class = "navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <a href="#" class="navbar-brand">Auto Gaz Kalkulator</a>
-        
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-          <span class="glyphicon glyphicon-list"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse navHeaderCollapse">
-          <ul class="nav navbar-nav navbar-right">
-               <c:choose>
-            	<c:when test="${not empty sessionScope.user}">
-            		<li><a href="logout">Wyloguj się</a></li>
-            	</c:when>
-            	<c:otherwise>
-            		<li><a href="login">Zaloguj się</a></li>
-            	</c:otherwise>
-            </c:choose>
-          </ul>
-        </div>
-        
-      </div>
-    </nav>
-    
+ 
+    <jsp:include page="fragment/navbar.jspf" />
     <div class="container">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
 			<form class="form-signin" action="j_security_check" method="post">
@@ -44,17 +21,12 @@
 				<input name="j_username" type="text" class="form-control" placeholder="Nazwa uzytkownika" required autofocus>
 				<input name="j_password" type="password" class="form-control" placeholder="Hasło" required>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
-				<a href="#">Zarejestruj</a>
+				<a href="${pageContext.request.contextPath}/register">Zarejestruj</a>
 			</form>
 		</div>
     </div>
     
-    <footer class="footer">
-      <div class="container">
-        <p class="navbar-text">Gaz Kalkulator - developed by <a href="http://linkedin.com/in/jarosław-czerwiński-6170b7121/">Jarosław Czerwiński</a></p>
-      </div>
-    </footer>
-    
+     <jsp:include page="fragment/footer.jspf" />
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="resources/js/bootstrap.js"></script>

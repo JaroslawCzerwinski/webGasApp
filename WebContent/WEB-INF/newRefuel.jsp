@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,25 +16,7 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<a href="#" class="navbar-brand">Auto Gaz Kalkulator</a>
-
-			<button class="navbar-toggle" data-toggle="collapse"
-				data-target=".navHeaderCollapse">
-				<span class="glyphicon glyphicon-list"></span>
-			</button>
-
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Statystyki</a></li>
-					<li><a href="#">Historia</a></li>
-					<li><a href="logout">Wyloguj się</a></li>
-				</ul>
-			</div>
-
-		</div>
-	</nav>
+	  <jsp:include page="fragment/navbar.jspf" />
 
 	<div class="container">
 		<h1 class="form-signin-heading">Dodaj nowe tankowanie</h1>
@@ -77,16 +60,8 @@
 		</form>
 	</div>
 
-	<footer class="footer">
-		<div class="container">
-			<p class="navbar-text">
-				Gaz Kalkulator - developed by <a
-					href="http://linkedin.com/in/jarosław-czerwiński-6170b7121/">JarosławCzerwiński</a>
-			</p>
-		</div>
-	</footer>
-
-	
+	  <jsp:include page="fragment/footer.jspf" />
+	  
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="resources/js/bootstrap.js"></script>

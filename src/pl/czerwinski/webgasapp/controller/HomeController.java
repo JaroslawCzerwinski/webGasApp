@@ -13,16 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import pl.czerwinski.webgasapp.model.Refuel;
 import pl.czerwinski.webgasapp.service.RefuelService;
 
-@WebServlet("")
+@WebServlet("/home")
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		saveRefuelingsInRequest(request);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-	}
+			saveRefuelingsInRequest(request);
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		}
+	
 
 	private void saveRefuelingsInRequest(HttpServletRequest request) {
 		RefuelService refuelingService = new RefuelService();

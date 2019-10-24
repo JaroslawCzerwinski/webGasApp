@@ -18,7 +18,7 @@ public class RefuelController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getUserPrincipal() != null) {
-			request.getRequestDispatcher("newRefuel.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/newRefuel.jsp").forward(request, response);
 		} else {
 			response.sendError(403);
 		}

@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<footer class="footer">
+		<div class="container">
+			<p class="navbar-text">
+				Gaz Kalkulator - developed by <a
+					href="http://linkedin.com/in/jarosław-czerwiński-6170b7121/">Jarosław
+					Czerwiński</a>
+			</p>
+		</div>
+	</footer>
