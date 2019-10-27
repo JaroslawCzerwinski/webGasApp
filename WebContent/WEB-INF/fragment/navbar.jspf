@@ -14,6 +14,7 @@
 					<c:choose>
 						<c:when test="${not empty sessionScope.user}">
 						<li><a href="${pageContext.request.contextPath}/add">Dodaj tankowanie</a></li>
+						<li><a href="${pageContext.request.contextPath}/history">Historia</a></li>
 						<li><a href="${pageContext.request.contextPath}/stat">Statystyki</a></li>
 						<li><a href="${pageContext.request.contextPath}/logout">Wyloguj
 									się</a></li>

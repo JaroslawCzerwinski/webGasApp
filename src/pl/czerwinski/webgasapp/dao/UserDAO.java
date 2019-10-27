@@ -9,6 +9,6 @@ public interface UserDAO extends GenericDAO<User, Long> {
 	
 	List<User> getAll();
 	User getUserByUsername(String username);
-	void updateUser(User calculateResult);
+	void updateUserStatistic(String username, User user);
 
 }

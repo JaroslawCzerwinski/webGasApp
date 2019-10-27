@@ -14,7 +14,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getUserPrincipal() != null) {
-			request.getRequestDispatcher("/home").forward(request, response);
+			request.getRequestDispatcher("/history").forward(request, response);
 			
 		} else {
 			response.sendError(403);

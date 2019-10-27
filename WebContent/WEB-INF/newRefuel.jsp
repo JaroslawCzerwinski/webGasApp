@@ -24,7 +24,7 @@
 			<div class="row">
 
 				<div class="col-ms-6 col-md-2">
-					<input name="distance" type="text" class="form-control"
+					<input name="distance" type="number" class="form-control"
 						placeholder="Przebieg" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">
@@ -32,19 +32,19 @@
 						placeholder="Data" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">
-					<input name="lpgAmount" type="text" class="form-control"
+					<input name="lpgAmount" type="number" class="form-control"
 						placeholder="Ile zatankowano LPG" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">
-					<input name="lpgPrice" type="text" class="form-control"
+					<input name="lpgPrice" type="number" class="form-control"
 						placeholder="Cena LPG" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">
-					<input name="petrolAmount" type="text" class="form-control"
+					<input name="petrolAmount" type="number" class="form-control"
 						placeholder="Ile zatankowano benzyny" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">
-					<input name="petrolPrice" type="text" class="form-control"
+					<input name="petrolPrice" type="number" class="form-control"
 						placeholder="Cena benzyny" required autofocus />
 				</div>
 				<div class="col-ms-6 col-md-2">

@@ -22,7 +22,7 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Koszt /100km</th>
-				<th scope="col">Zużycie LPG/100km</th>
+				<th scope="col">Średnie spalanie /100km</th>
 				<th scope="col">Całkowicie zaoszczędzono</th>
 				<th scope="col">Całkowicie wydano</th>
 			</tr>
@@ -32,7 +32,7 @@
 			<c:if test="${not empty requestScope.statistic}">
 					<tr>
 						<td scope="row"><c:out value="${statistic.cost100Km} " /> zł</td>
-						<td scope="row"><c:out value="${statistic.lpg100Km} " /> l</td>
+						<td scope="row"><c:out value="${statistic.averageConsumption100Km} " /> l</td>
 						<td scope="row"><c:out value="${statistic.totalSaiving} " /> zł</td>
 						<td scope="row"><c:out value="${statistic.totalCost} " /> zł</td>
 					</tr>

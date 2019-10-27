@@ -7,7 +7,7 @@ public class User {
 	private Double totalSaiving;
 	private Double totalCost;
 	private Double cost100Km;
-	private Double lpg100Km;
+	private Double averageConsumption100Km;
 
 	public User() {
 	}
@@ -66,18 +66,18 @@ public class User {
 		this.cost100Km = cost100Km;
 	}
 
-	public Double getLpg100Km() {
-		return lpg100Km;
+	public Double getAverageConsumption100Km() {
+		return averageConsumption100Km;
 	}
 
-	public void setLpg100Km(Double lpg100Km) {
-		this.lpg100Km = lpg100Km;
+	public void setAverageConsumption100Km(Double averageConsumption100Km) {
+		this.averageConsumption100Km = averageConsumption100Km;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", totalCost=" + totalCost
-				+ ", totalSaiving=" + totalSaiving +", cost/100km=" + cost100Km +", LPG/100km="+ lpg100Km;
+				+ ", totalSaiving=" + totalSaiving +", cost/100km=" + cost100Km +", averageConsumption100Km="+ averageConsumption100Km;
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class User {
 		int result = 1;
 		result = prime * result + ((cost100Km == null) ? 0 : cost100Km.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((lpg100Km == null) ? 0 : lpg100Km.hashCode());
+		result = prime * result + ((averageConsumption100Km == null) ? 0 : averageConsumption100Km.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((totalCost == null) ? 0 : totalCost.hashCode());
 		result = prime * result + ((totalSaiving == null) ? 0 : totalSaiving.hashCode());
@@ -110,10 +110,10 @@ public class User {
 			return false;
 		if (id != other.id)
 			return false;
-		if (lpg100Km == null) {
-			if (other.lpg100Km != null)
+		if (averageConsumption100Km == null) {
+			if (other.averageConsumption100Km != null)
 				return false;
-		} else if (!lpg100Km.equals(other.lpg100Km))
+		} else if (!averageConsumption100Km.equals(other.averageConsumption100Km))
 			return false;
 		if (password == null) {
 			if (other.password != null)

@@ -23,7 +23,7 @@ public class StatisticController extends HttpServlet {
 	private void saveStatisticInRequest(HttpServletRequest request) {
 		UserService userService = new UserService();
 		String username = request.getUserPrincipal().getName();
-		userService.calculateStatisticByUsername(username);
+		userService.saveStatisticByUsername(username);
 		User statisticByUsername = userService.getUserByUsername(username);
 		request.setAttribute("statistic", statisticByUsername);
 	}

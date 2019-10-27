@@ -39,7 +39,7 @@ public class RefuelController extends HttpServlet {
 		if(request.getUserPrincipal() != null) {
 			RefuelService refuelService = new RefuelService();
 			refuelService.addRefuel(distance, date, lpgAmount, lpgPrice, petrolAmount, petrolPrice, gasEfficiency, authenticatedUser);
-			response.sendRedirect(request.getContextPath() + "/add");
+			response.sendRedirect(request.getContextPath() + "/history");
 		} else {
 			response.sendError(403);
 		}

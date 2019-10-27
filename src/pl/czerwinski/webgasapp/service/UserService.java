@@ -32,23 +32,31 @@ public class UserService {
 		return user;
 	}
 
-	public void calculateStatisticByUsername(String username) {
+	public void saveStatisticByUsername(String username) {
 		DAOFactory factory = DAOFactory.getDAOFactory();
 		RefuelDAO refuelDao = factory.getRefuelDAO();
 		UserDAO userDao = factory.getUserDAO();
 		List<Refuel> refuels = refuelDao.getRefuelByUsername(username);
-		User calculateResult = calculateSatistic(refuels);
-		userDao.updateUser(calculateResult); // Zrobiæ zapisywanie statystyk do BD
+		User user = calculateSatistic(refuels);
+		userDao.updateUserStatistic(username, user);
 	}
 
 	private User calculateSatistic(List<Refuel> refuels) {
 		User result = new User();
-		result.setTotalCost(totalCost(refuels));
-		result.setTotalSaiving(totalSaiving(refuels));
-		result.setLpg100Km(averageConsumption(refuels)); // Œrednie spalanie, a nie œrednie spalanie LPG do poprawy
-		result.setCost100Km(averageCost100Km(refuels));
-		return result;
-
+		if (refuels.size() >= 2) {
+			result.setTotalCost(totalCost(refuels));
+			result.setTotalSaiving(totalSaiving(refuels));
+			result.setAverageConsumption100Km(averageConsumption(refuels));
+			result.setCost100Km(averageCost100Km(refuels));
+			return result;
+			
+		} else {
+			result.setTotalCost(0.00);
+			result.setTotalSaiving(0.00);
+			result.setAverageConsumption100Km(0.00);
+			result.setCost100Km(0.00);
+			return result;
+		}
 	}
 
 	private Double totalCost(List<Refuel> refuels) {
@@ -57,7 +65,6 @@ public class UserService {
 			Refuel refuelCost = refuels.get(i);
 			totalCost += refuelCost.getPaid();
 		}
-
 		return totalCost;
 
 	}
@@ -87,7 +94,7 @@ public class UserService {
 			totalPetrolAmount += petrolAmount.getPetrolAmount();
 		}
 
-		int firstDistance = refuels.get(1).getDistance();
+		int firstDistance = refuels.get(0).getDistance();
 		int lastDistance = refuels.get(refuels.size() - 1).getDistance();
 
 		averageLPGConsumption = (totalLPGAmount + totalPetrolAmount) / (lastDistance - firstDistance) * 100;
@@ -105,10 +112,10 @@ public class UserService {
 			totalCost += refuelCost.getPaid();
 		}
 
-		int firstDistance = refuels.get(1).getDistance();
+		int firstDistance = refuels.get(0).getDistance();
 		int lastDistance = refuels.get(refuels.size() - 1).getDistance();
 
-		averageCost100Km = totalCost / (lastDistance - firstDistance);
+		averageCost100Km = totalCost / (lastDistance - firstDistance) * 100;
 
 		return averageCost100Km;
 
