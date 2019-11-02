@@ -12,6 +12,10 @@ public class User {
 	public User() {
 	}
 
+	public User(String username) {
+		this.username = username;
+	}
+
 	public User(User user) {
 		this.id = user.id;
 		this.username = user.username;
@@ -77,7 +81,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", totalCost=" + totalCost
-				+ ", totalSaiving=" + totalSaiving +", cost/100km=" + cost100Km +", averageConsumption100Km="+ averageConsumption100Km;
+				+ ", totalSaiving=" + totalSaiving + ", cost/100km=" + cost100Km + ", averageConsumption100Km="
+				+ averageConsumption100Km;
 	}
 
 	@Override

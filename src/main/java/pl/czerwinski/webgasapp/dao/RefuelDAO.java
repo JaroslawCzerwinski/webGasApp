@@ -8,4 +8,5 @@ public interface RefuelDAO extends GenericDAO<Refuel, Long> {
 
 	List<Refuel> getAll();
 	List<Refuel> getRefuelByUsername(String username);
+	void deleteRefuelById(long refuelId);
 }

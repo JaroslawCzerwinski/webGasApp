@@ -21,7 +21,10 @@ public class RefuelDAOImpl implements RefuelDAO {
 	private static final String CREATE_NEW_REFUEL = "INSERT INTO refueling_data(distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency, user_id) "
 			+ "VALUES(:distance, :date, :lpg_amount, :lpg_price, :petrol_amount, :petrol_price, :paid, :saiving, :gas_efficiency, :user_id);";
 
-	private static final String READ_REFUELING_BY_USERNAME = "SELECT distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency FROM refueling_data r LEFT JOIN user u ON r.user_id = u.user_id WHERE username=:username";
+	private static final String READ_REFUELING_BY_USERNAME = "SELECT refueling_id, distance, date, lpg_amount, lpg_price, petrol_amount, petrol_price, paid, saiving, gas_efficiency FROM refueling_data r LEFT JOIN user u ON r.user_id = u.user_id WHERE username=:username";
+
+	private static final String DELETE_REFUEL_BY_ID = "DELETE FROM refueling_data WHERE refueling_id=:refueling_id";
+;
 	
 	private NamedParameterJdbcTemplate template;
 
@@ -86,6 +89,7 @@ public class RefuelDAOImpl implements RefuelDAO {
 		@Override
 		public Refuel mapRow(ResultSet resultSet, int row) throws SQLException {
 			Refuel refuel = new Refuel();
+			refuel.setId(resultSet.getLong("refueling_id"));
 			refuel.setDistance(resultSet.getInt("distance"));
 			refuel.setDate(resultSet.getString("date"));
 			refuel.setLpgAmount(resultSet.getDouble("lpg_amount"));
@@ -99,5 +103,11 @@ public class RefuelDAOImpl implements RefuelDAO {
 			return refuel;
 		}
 	}
-
+	@Override
+	public void deleteRefuelById(long refuelId) {
+		SqlParameterSource paramSource = new MapSqlParameterSource("refueling_id", refuelId);
+		template.update(DELETE_REFUEL_BY_ID, paramSource);
+		
+	}
+	
 }

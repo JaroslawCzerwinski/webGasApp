@@ -59,4 +59,11 @@ public class RefuelService {
 		return saiving;
 	}
 
+	public void deleteRefuelById(long refuelId) {
+		DAOFactory factory = DAOFactory.getDAOFactory();
+		RefuelDAO refuelDao = factory.getRefuelDAO();
+		refuelDao.deleteRefuelById(refuelId);
+		
+	}
+
 }

@@ -17,7 +17,7 @@
 
 <body>
 	<jsp:include page="fragment/navbar.jspf" />
-	
+
 	<div class="table-responsive">
 		<table class="table ">
 			<thead class="thead-dark">
@@ -38,8 +38,9 @@
 			<tbody>
 				<c:if test="${not empty requestScope.refuelings}">
 					<c:forEach var="refuel" items="${requestScope.refuelings}">
+
 						<tr>
-							<td scope="row"><c:out value="refuel ID" /></td>
+							<td scope="row"><form method="Post" action="delete"> <input type="hidden" name="refuel_id" value="${refuel.id}"><input type=submit value="usuń"></form></td>
 							<td scope="row"><c:out value="${refuel.distance} " /> km</td>
 							<td scope="row"><c:out value="${refuel.date} " /></td>
 							<td scope="row"><c:out value="${refuel.lpgAmount} " /> l</td>
